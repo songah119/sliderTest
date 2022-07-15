@@ -10,7 +10,8 @@
 ### useThemeObserver.js - 스크롤을 감지해서 네비게이션 바 색 변경해주는 옵저버 커스텀 훅
 ### useMouseScroll - 혹시 몰라서 만들어둔 클릭시 시점 이동 커스텀 훅
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/69359991/179124014-8e241ad0-9579-42bc-8e7e-5fb439bce000.gif)
+
+https://user-images.githubusercontent.com/69359991/179125368-8aa7359f-3750-4d43-984d-2a56cd0c39f5.mp4
 
 옵저버를 달아서 슬라이드가 해당 슬라이드가 감지되면 버튼색상과 slideNum을 바꿔주고, 
 버튼을 클릭하면 scroll의 위치를 바꿔주는 코드를 작성했으나, 
