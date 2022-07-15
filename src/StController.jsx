@@ -1,38 +1,41 @@
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 function SlideController(props) {
-  const { position } = props; //현재 슬라이드의 위치(숫자)
-  const [slideNum, setSlideNum] = useState(position);
+  const { slideNumber, setSlideNumber } = props; //현재 슬라이드의 위치(숫자)
 
   useEffect(() => {
     //props 바뀔때마다 set해줘야 리렌더링 가능
-    setSlideNum(position);
-  }, [position]);
+    setSlideNumber(slideNumber);
+  }, [slideNumber]);
+
+  // useEffect(() => {
+  //   useMoveScroll();
+  // }, [slideNumber]);
 
   return (
     <StControllerWrapper>
       <div
-        className={slideNum === 1 ? "isactive" : "unactive"}
-        onClick={() => setSlideNum(1)}
+        className={slideNumber === 1 ? "isactive" : "unactive"}
+        onClick={() => setSlideNumber(1)}
       >
         <p>red</p>
       </div>
       <div
-        className={slideNum === 2 ? "isactive" : "unactive"}
-        onClick={() => setSlideNum(2)}
+        className={slideNumber === 2 ? "isactive" : "unactive"}
+        onClick={() => setSlideNumber(2)}
       >
         <p>yellow</p>
       </div>
       <div
-        className={slideNum === 3 ? "isactive" : "unactive"}
-        onClick={() => setSlideNum(3)}
+        className={slideNumber === 3 ? "isactive" : "unactive"}
+        onClick={() => setSlideNumber(3)}
       >
         <p>green</p>
       </div>
       <div
-        className={slideNum === 4 ? "isactive" : "unactive"}
-        onClick={() => setSlideNum(4)}
+        className={slideNumber === 4 ? "isactive" : "unactive"}
+        onClick={() => setSlideNumber(4)}
       >
         <p>blue</p>
       </div>

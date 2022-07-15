@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SlideController from "./StController";
 import { useState, useEffect, useRef } from "react";
 import { useThemeObserver } from "./useThemeObserver";
+// import { useMoveScroll } from "./useMoveScroll";
 
 function App() {
   const [slideNumber, setSlideNumber] = useState(1);
@@ -11,9 +12,40 @@ function App() {
   const thirdSlideRef = useThemeObserver(setSlideNumber, 3);
   const fourthSlideRef = useThemeObserver(setSlideNumber, 4);
 
+  ///와!!!!!!!!!!!! 이슈 발생 올라가다가 observer때매 두칸씩 못올라감
+  useEffect(() => {
+    console.log("slideNumber", slideNumber);
+  }, [slideNumber]);
+
+  useEffect(() => {
+    //slideNumber가 변경 될 때 마다 스크롤 옮겨주기
+    moveToElement(slideNumber);
+  }, [slideNumber]);
+
+  const moveToElement = (slideNumber) => {
+    let clickedSlideNum = slideNumber;
+    let clickedSlideRef;
+    if (clickedSlideNum === 1) {
+      clickedSlideRef = firstSlideRef;
+    } else if (clickedSlideNum === 2) {
+      clickedSlideRef = secondSlideRef;
+    } else if (clickedSlideNum === 3) {
+      clickedSlideRef = thirdSlideRef;
+    } else if (clickedSlideNum === 4) {
+      clickedSlideRef = fourthSlideRef;
+    }
+    clickedSlideRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <StContainer>
-      <SlideController position={slideNumber} />
+      <SlideController
+        slideNumber={slideNumber}
+        setSlideNumber={setSlideNumber}
+      />
       <StSlidediv className="first-slide" ref={firstSlideRef}>
         <p>first</p>
       </StSlidediv>
